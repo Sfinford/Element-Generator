@@ -1,4 +1,5 @@
 const enableRareEventsCheckbox = document.getElementById("enable-rare-events");
+const randomNameLengthsCheckbox = document.getElementById("do-random");
 const maxPairsSlider = document.getElementById("max-pairs");
 const maxPairsValue = document.getElementById("max-pairs-value");
 
@@ -16,7 +17,7 @@ const generateBtn = document.getElementById("generate-btn");
                         "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z",
                         "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z",
                         "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z",
-                        "bl", "br", "ch", "ck", "cl", "cr", "dr", "fl", "fr", "gh", "gl", "gr", "ng", "ph", "pl", "pr", "qu", "sc", "sh", "sk", "sl", "sm", "sn", "sp", "st", "sw", "th", "tr", "tw", "wh", "wr"];
+                        "ll","bl", "br", "ch", "ck", "cl", "cr", "dr", "fl", "fr", "gh", "gl", "gr", "ng", "ph", "pl", "pr", "qu", "sc", "sh", "sk", "sl", "sm", "sn", "sp", "st", "sw", "th", "tr", "tw", "wh", "wr"];
     const vowels = ["a", "e", "i", "o", "u",
                     "a", "e", "i", "o", "u",
                     "a", "e", "i", "o", "u",
@@ -59,6 +60,10 @@ const generateBtn = document.getElementById("generate-btn");
         numPairs = maxPairsSlider.value;
       }
 
+      if (randomNameLengthsCheckbox.checked) {
+        numPairs = Math.floor(Math.random() * 5) + 1;
+      }
+
       for (let i = 0; i < numPairs; i++) {
         word.push(getRandomChar(consonants));
         word.push(getRandomChar(vowels));
@@ -66,7 +71,7 @@ const generateBtn = document.getElementById("generate-btn");
 
       word.push(getRandomChar(consonants));
 
-      const suffixes = ["ium", "ite", "ide", "ine", "ose", "ite", "ide", "one", "ene", "ate"];
+      const suffixes = ["ium", "ite","ium","ium","ite","alt","il","ide", "ine", "ose", "ite", "ide", "one", "ene", "ate"];
       const suffix = getRandomChar(suffixes);
 
       word.push(suffix);
@@ -88,7 +93,7 @@ const generateBtn = document.getElementById("generate-btn");
     const helpBtn = document.getElementById("help-btn");
     const tooltip = document.createElement("div");
     tooltip.classList.add("tooltip");
-    tooltip.innerText = "Random Element Generator: Press Generate for a new custom element with a unique name. Background changes color to represent the element. Scroll down to adjust settings. Have fun exploring!";
+    tooltip.innerText = "Random Element Generator: Press Generate for a new custom element with a unique name. Background changes color to represent the element. Change the controls on the bottom to adjust settings. Have fun exploring!";
     
     helpBtn.appendChild(tooltip);
     
